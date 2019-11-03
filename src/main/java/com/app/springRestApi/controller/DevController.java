@@ -21,7 +21,23 @@ public class DevController {
   @PostMapping("developers")
   public String addDeveloper(Developer dev){
     repo.save(dev);
-    return "New developer was added successfully." + dev;
+    String message = "New developer was successfully added.  " + dev;
+    return message;
+  }
+
+  @PutMapping("developers")
+  public String editDeveloper(Developer dev){
+    repo.save(dev);
+    String message = "Developer was successfully updated.  " + dev;
+    return message;
+  }
+
+  @DeleteMapping("developers/{id}")
+  public String deleteDeveloper(@PathVariable("id") int id){
+    Developer dev = repo.getOne(id);
+    String message = "Developer was successfully deleted.  " + dev;
+    repo.delete(dev);
+    return message;
   }
 
 }

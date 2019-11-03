@@ -6,7 +6,7 @@
 * Web
 * H2
 * Rest
-
+* Postman
 
 * Spring Annotations (@Controller, @Autowire, @RequestMapping...)
 * Thymeleaf
