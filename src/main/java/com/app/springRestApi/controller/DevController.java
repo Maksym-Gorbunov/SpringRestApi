@@ -1,7 +1,7 @@
 package com.app.springRestApi.controller;
 
-import com.app.springRestApi.model.DevRepo;
-import com.app.springRestApi.model.Developer;
+//import com.app.springRestApi.model.DevRepo;
+//import com.app.springRestApi.model.Developer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +9,14 @@ import java.util.List;
 
 @RestController
 public class DevController {
+
+  // http://localhost:9090/developers
+  @GetMapping("developers")
+  public String getDevelopers(){
+    return "developers";
+  }
+
+  /*
 
   @Autowired
   private DevRepo repo;
@@ -67,5 +75,5 @@ public class DevController {
 
 
 
-
+*/
 }

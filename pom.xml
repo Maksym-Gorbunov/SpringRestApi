@@ -44,6 +44,14 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.10.0</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -52,7 +60,90 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<mainClass>com.app.springRestApi.SpringRestApiApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-5</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>com.app.springRestApi.SpringRestApiApplication</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>assemble-all</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!--<plugin>-->
+				<!--&lt;!&ndash; Build an executable JAR &ndash;&gt;-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-jar-plugin</artifactId>-->
+				<!--<version>3.1.0</version>-->
+				<!--<configuration>-->
+					<!--<archive>-->
+						<!--<manifest>-->
+							<!--<addClasspath>true</addClasspath>-->
+							<!--<classpathPrefix>lib/</classpathPrefix>-->
+							<!--<mainClass>com.app.springRestApi.SpringRestApiApplication</mainClass>-->
+						<!--</manifest>-->
+					<!--</archive>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
+
+
+
+			<!--HEROKU-->
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>2.0.13</version>
+				<configuration>
+					<processTypes>
+						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+						<web>java -jar target/springRestApi-0.0.1-SNAPSHOT.jar</web>
+					</processTypes>
+					<includeTarget>false</includeTarget>
+					<includes>
+						<include>target/my-app-1.0.jar</include>
+					</includes>
+
+				</configuration>
+
+			</plugin>
+
+
 		</plugins>
+
+
 	</build>
 
 </project>
