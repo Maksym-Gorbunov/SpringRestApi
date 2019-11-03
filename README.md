@@ -8,12 +8,6 @@
 * Rest
 * Postman
 
-* Spring Annotations (@Controller, @Autowire, @RequestMapping...)
-* Thymeleaf
-* ModelAndView
-* Tomcat-Jasper
-* Content Negotiation
-
 
 ![](info/info.gif)
 
