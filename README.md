@@ -11,3 +11,5 @@
 
 ![](info/info.gif)
 
+cygdrive/c/java/springRestApi/target
+$ java -jar springRestApi-0.0.1-SNAPSHOT.jar
